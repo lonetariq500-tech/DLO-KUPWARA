@@ -231,24 +231,21 @@
         </div>
     </footer>
 
-    <script>
-        const APPS_SCRIPT_API_URL = "https://script.google.com/macros/s/AKfycbzKEp399ADOZ7M5wOFq3f7aPQ5tqhTLBlpBJ_ReZ-aVxNuSU3vOzf2tZOOZk9L-fpJZ/exec";
-        
+    <script>        
         let hasPopulatedDropdowns = false;
-        let weightageChartInstance = null;
-        let currentLoadedCasesRaw = [];
+let weightageChartInstance = null;
+let currentLoadedCasesRaw = [];
 
-        async function fetchFilteredData() {
-            document.getElementById("table-loading-state").style.display = "block";
-            document.getElementById("live-data-grid").style.display = "none";
-
-            const selectedCourt = document.getElementById("court-select").value;
-            const selectedDept = document.getElementById("dept-select").value;
-            
-            // CACHE-BUSTING PARM: Adds a unique timestamp string so the browser never caches the database output
-            const cacheBuster = new Date().getTime();
-            const finalQueryUrl = `${APPS_SCRIPT_API_URL}?court=${encodeURIComponent(selectedCourt)}&department=${encodeURIComponent(selectedDept)}&_cb=${cacheBuster}`;
-
+async function fetchFilteredData() {
+    document.getElementById("table-loading-state").style.display = "block";
+    document.getElementById("live-data-grid").style.display = "none";
+    
+    const selectedCourt = document.getElementById("court-select").value;
+    const selectedDept = document.getElementById("dept-select").value;
+    const cacheBuster = new Date().getTime();
+    
+    // THIS IS WHERE THE STRING BELONGS:
+    const finalQueryUrl = `${APPS_SCRIPT_API_URL}?court=${encodeURIComponent(selectedCourt)}&department=${encodeURIComponent(selectedDept)}&_cb=${cacheBuster}`;
             try {
                 const response = await fetch(finalQueryUrl);
                 const payload = await response.json();
