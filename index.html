@@ -203,4 +203,190 @@
                         <p>Querying dynamic master data cells...</p>
                     </div>
                     
-                    <table class="datagrid-table" id="live-data-grid" style="
+                    <table class="datagrid-table" id="live-data-grid" style="display: none;">
+                        <thead>
+                            <tr>
+                                <th>S.No</th>
+                                <th>CNR / Case Identifier</th>
+                                <th>Litigation Title</th>
+                                <th>Subject Matter</th>
+                                <th>Department</th>
+                                <th>Target Court Forum</th>
+                                <th>Hearing Date</th>
+                                <th>Reply Status</th>
+                                <th>State Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="live-data-rows"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 District Litigation Office Kupwara.</p>
+            <span style="color: var(--accent-gold); font-weight:600;">Government of Jammu & Kashmir</span>
+        </div>
+    </footer>
+
+    <script>
+        const APPS_SCRIPT_API_URL = "https://script.google.com/macros/s/AKfycbzKEp399ADOZ7M5wOFq3f7aPQ5tqhTLBlpBJ_ReZ-aVxNuSU3vOzf2tZOOZk9L-fpJZ/exec";
+        
+        let hasPopulatedDropdowns = false;
+        let weightageChartInstance = null;
+        let currentLoadedCasesRaw = [];
+
+        async function fetchFilteredData() {
+            document.getElementById("table-loading-state").style.display = "block";
+            document.getElementById("live-data-grid").style.display = "none";
+
+            const selectedCourt = document.getElementById("court-select").value;
+            const selectedDept = document.getElementById("dept-select").value;
+            
+            // CACHE-BUSTING PARM: Adds a unique timestamp string so the browser never caches the database output
+            const cacheBuster = new Date().getTime();
+            const finalQueryUrl = `${APPS_SCRIPT_API_URL}?court=${encodeURIComponent(selectedCourt)}&department=${encodeURIComponent(selectedDept)}&_cb=${cacheBuster}`;
+
+            try {
+                const response = await fetch(finalQueryUrl);
+                const payload = await response.json();
+
+                currentLoadedCasesRaw = payload.cases || [];
+
+                // 1. Process Macro Metrics
+                document.getElementById("kpi-total").textContent = payload.kpis.total;
+                document.getElementById("kpi-active").textContent = payload.kpis.active;
+                document.getElementById("kpi-disposed").textContent = payload.kpis.disposed;
+
+                // 2. Populate Dropdowns
+                if (!hasPopulatedDropdowns) {
+                    populateFilterOptions("court-select", payload.dropdowns.courts);
+                    populateFilterOptions("dept-select", payload.dropdowns.departments);
+                    hasPopulatedDropdowns = true;
+                }
+
+                // 3. Render Court Weightage List
+                const breakdownContainer = document.getElementById("court-breakdown-list");
+                breakdownContainer.innerHTML = "";
+                
+                let chartLabels = [];
+                let chartDataValues = [];
+
+                payload.courts.forEach(court => {
+                    chartLabels.push(court.name);
+                    chartDataValues.push(court.count);
+
+                    const rowHTML = `
+                        <div class="court-row">
+                            <span class="court-name"><i class="fa-solid fa-gavel" style="color:var(--accent-gold); margin-right:10px;"></i>${court.name}</span>
+                            <span class="court-badge">${court.count} cases</span>
+                        </div>
+                    `;
+                    breakdownContainer.insertAdjacentHTML("beforeend", rowHTML);
+                });
+
+                renderWeightageChart(chartLabels, chartDataValues);
+
+                // 4. Populate Table Rows
+                const rowsContainer = document.getElementById("live-data-rows");
+                rowsContainer.innerHTML = "";
+
+                if (currentLoadedCasesRaw.length === 0) {
+                    rowsContainer.innerHTML = `<tr><td colspan="9" style="text-align:center; padding: 40px; color:#64748B;">No matching active case logs found.</td></tr>`;
+                } else {
+                    currentLoadedCasesRaw.forEach(caseItem => {
+                        const isReplyFiled = !caseItem.replyStatus.toLowerCase().includes("not");
+                        const replyStatusClass = isReplyFiled ? "active" : "pending";
+                        
+                        const caseRowHTML = `
+                            <tr>
+                                <td style="font-weight:600; color:#64748B;">${caseItem.srNo}</td>
+                                <td><span class="cnr-code">${caseItem.cnrNo}</span></td>
+                                <td><span class="case-title-block">${caseItem.title}</span></td>
+                                <td><span class="subject-matter-text">${caseItem.subject}</span></td>
+                                <td><span class="badge-dept">${caseItem.dept}</span></td>
+                                <td style="font-weight:500;">${caseItem.court}</td>
+                                <td><span class="hearing-date-badge">${caseItem.nextHearing}</span></td>
+                                <td><span class="status-pill ${replyStatusClass}">${caseItem.replyStatus}</span></td>
+                                <td><span class="status-pill active">${caseItem.caseStatus}</span></td>
+                            </tr>
+                        `;
+                        rowsContainer.insertAdjacentHTML("beforeend", caseRowHTML);
+                    });
+                }
+
+                document.getElementById("table-loading-state").style.display = "none";
+                document.getElementById("live-data-grid").style.display = "table";
+
+            } catch (err) {
+                console.error("Pipeline failure: ", err);
+            }
+        }
+
+        function populateFilterOptions(elementId, optionsArray) {
+            const selectElement = document.getElementById(elementId);
+            const savedValue = selectElement.value;
+            selectElement.innerHTML = selectElement.options[0].outerHTML;
+            optionsArray.forEach(val => {
+                const opt = document.createElement("option");
+                opt.value = val;
+                opt.textContent = val;
+                selectElement.appendChild(opt);
+            });
+            selectElement.value = savedValue;
+        }
+
+        function renderWeightageChart(labels, dataValues) {
+            const ctx = document.getElementById('automaticWeightageChart').getContext('2d');
+            if (weightageChartInstance) { weightageChartInstance.destroy(); }
+            weightageChartInstance = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: dataValues,
+                        backgroundColor: ['#0A192F', '#112240', '#C9A84C', '#E8C96A', '#3B82F6', '#10B981', '#EF4444', '#F59E0B', '#6366F1', '#8B5CF6']
+                    }]
+                },
+                options: { responsive: true, plugins: { legend: { display: false } } }
+            });
+        }
+
+        function downloadTerminalAsExcel() {
+            if (currentLoadedCasesRaw.length === 0) { alert("No data to export."); return; }
+            const structuredData = currentLoadedCasesRaw.map(item => ({
+                "S.No": item.srNo, "CNR / Case Number": item.cnrNo, "Litigation Title": item.title, "Subject Matter": item.subject, "Department": item.dept, "Court Forum": item.court, "Last Proceedings": item.lastProc, "Next Hearing Date": item.nextHearing, "Reply Status": item.replyStatus, "Case Status": item.caseStatus, "Case Type": item.caseType
+            }));
+            const worksheet = XLSX.utils.json_to_sheet(structuredData);
+            const workbook = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(workbook, worksheet, "Filtered Litigation Output");
+            XLSX.writeFile(workbook, "DLO_Kupwara_Filtered_Caseload.xlsx");
+        }
+
+        function downloadTerminalAsPDF() {
+            if (currentLoadedCasesRaw.length === 0) { alert("No data to export."); return; }
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF('l', 'mm', 'a4');
+            doc.setFont("Helvetica", "bold"); doc.setFontSize(14); doc.setTextColor(10, 25, 47);
+            doc.text("DISTRICT LITIGATION OFFICE KUPWARA", 14, 15);
+            doc.setFont("Helvetica", "normal"); doc.setFontSize(10); doc.setTextColor(100, 116, 139);
+            doc.text("Department of Law, Justice & Parliamentary Affairs | Automated Selection Export", 14, 21);
+            const columns = ["S.No", "Case / CNR Number", "Litigation Title", "Department", "Court Forum", "Next Hearing", "Reply Status"];
+            const rows = currentLoadedCasesRaw.map(item => [item.srNo, item.cnrNo, item.title, item.dept, item.court, item.nextHearing, item.replyStatus]);
+            doc.autoTable({
+                head: [columns], body: rows, startY: 26, theme: 'striped',
+                headStyles: { fillColor: [10, 25, 47], textColor: [255, 255, 255], fontSize: 9, fontStyle: 'bold' },
+                styles: { fontSize: 8, cellPadding: 3, overflow: 'linebreak' },
+                columnStyles: { 2: { cellWidth: 60 }, 4: { cellWidth: 50 } }
+            });
+            doc.save("DLO_Kupwara_Filtered_Report.pdf");
+        }
+
+        document.getElementById("court-select").addEventListener("change", fetchFilteredData);
+        document.getElementById("dept-select").addEventListener("change", fetchFilteredData);
+        window.addEventListener("DOMContentLoaded", fetchFilteredData);
+    </script>
+</body>
+</html>
