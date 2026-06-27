@@ -4,13 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>District Litigation Office Kupwara | Official Portal</title>
-    
-    <!-- Premium Professional Typography & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <style>
-        /* ── SYSTEM DESIGN TOKENS ── */
         :root {
             --primary-navy: #0A192F;
             --surface-navy: #112240;
@@ -20,547 +16,99 @@
             --text-secondary: #8892B0;
             --bg-light: #F8FAFC;
             --border-color: #E2E8F0;
-            
-            /* Status Indicators */
             --status-active-bg: #E6F4EA;
             --status-active-txt: #137333;
             --status-pending-bg: #FCE8E6;
             --status-pending-txt: #C5221F;
         }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            font-family: 'Inter', sans-serif;
-            color: #1E293B;
-            background-color: var(--bg-light);
-        }
-
-        /* ── UTILITY STYLES ── */
-        .container {
-            max-width: 1300px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* ── TOP EXECUTIVE BANNER ── */
-        .top-banner {
-            background: var(--primary-navy);
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 12px;
-            font-weight: 500;
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(201, 168, 76, 0.2);
-            letter-spacing: 0.5px;
-        }
-
-        .top-banner .inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .live-sync-indicator {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(201, 168, 76, 0.1);
-            border: 1px solid rgba(201, 168, 76, 0.3);
-            padding: 4px 12px;
-            border-radius: 20px;
-            color: var(--accent-gold);
-            font-size: 11px;
-        }
-
-        .pulse-dot {
-            width: 8px;
-            height: 8px;
-            background: #22C55E;
-            border-radius: 50%;
-            box-shadow: 0 0 8px #22C55E;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(0.95); opacity: 1; }
-            50% { transform: scale(1.15); opacity: 0.5; }
-            100% { transform: scale(0.95); opacity: 1; }
-        }
-
-        /* ── NAVIGATION BAR ── */
-        header {
-            background: #FFFFFF;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 2px solid var(--border-color);
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 80px;
-        }
-
-        .brand-block {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            text-decoration: none;
-        }
-
-        .brand-logo {
-            font-size: 32px;
-            color: var(--primary-navy);
-        }
-
-        .brand-text h1 {
-            font-family: 'Cinzel', serif;
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--primary-navy);
-            letter-spacing: 0.5px;
-        }
-
-        .brand-text p {
-            font-size: 11px;
-            text-transform: uppercase;
-            color: var(--accent-gold);
-            letter-spacing: 1.5px;
-            margin-top: 2px;
-            font-weight: 600;
-        }
-
-        .nav-menu {
-            display: flex;
-            align-items: center;
-            gap: 32px;
-            list-style: none;
-        }
-
-        .nav-menu a {
-            text-decoration: none;
-            color: #475569;
-            font-size: 14px;
-            font-weight: 500;
-            transition: color 0.2s ease;
-        }
-
-        .nav-menu a:hover {
-            color: var(--primary-navy);
-        }
-
-        .btn-cta {
-            background: var(--primary-navy);
-            color: #FFFFFF !important;
-            padding: 10px 20px;
-            border-radius: 6px;
-            font-weight: 600 !important;
-            transition: background 0.2s ease;
-        }
-
-        .btn-cta:hover {
-            background: #1E293B;
-        }
-
-        /* ── HERO SUITE SECTION ── */
-        .hero-section {
-            background: linear-gradient(135deg, #050C16 0%, #0A192F 100%);
-            color: #FFFFFF;
-            padding: 100px 0 80px 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(201, 168, 76, 0.05) 0%, transparent 70%);
-            top: -10%;
-            right: -10%;
-        }
-
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 64px;
-            align-items: center;
-        }
-
-        .hero-content h2 {
-            font-family: 'Cinzel', serif;
-            font-size: 42px;
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 20px;
-            letter-spacing: -0.5px;
-        }
-
-        .hero-content h2 em {
-            color: var(--accent-gold);
-            font-style: normal;
-        }
-
-        .hero-tagline {
-            font-size: 16px;
-            color: var(--text-secondary);
-            line-height: 1.6;
-            margin-bottom: 36px;
-            max-width: 600px;
-        }
-
-        /* LIVE METRIC CARDS (HERO INTEGRATED) */
-        .kpi-wrapper {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .kpi-card {
-            background: var(--surface-navy);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; font-family: 'Inter', sans-serif; color: #1E293B; background-color: var(--bg-light); }
+        .container { max-width: 1300px; margin: 0 auto; padding: 0 24px; }
+        .top-banner { background: var(--primary-navy); color: rgba(255, 255, 255, 0.7); font-size: 12px; font-weight: 500; padding: 10px 0; border-bottom: 1px solid rgba(201, 168, 76, 0.2); letter-spacing: 0.5px; }
+        .top-banner .inner { display: flex; justify-content: space-between; align-items: center; }
+        .live-sync-indicator { display: inline-flex; align-items: center; gap: 8px; background: rgba(201, 168, 76, 0.1); border: 1px solid rgba(201, 168, 76, 0.3); padding: 4px 12px; border-radius: 20px; color: var(--accent-gold); font-size: 11px; }
+        .pulse-dot { width: 8px; height: 8px; background: #22C55E; border-radius: 50%; box-shadow: 0 0 8px #22C55E; animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { transform: scale(0.95); opacity: 1; } 50% { transform: scale(1.15); opacity: 0.5; } 100% { transform: scale(0.95); opacity: 1; } }
+        header { background: #FFFFFF; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03); position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid var(--border-color); }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; height: 80px; }
+        .brand-block { display: flex; align-items: center; gap: 16px; text-decoration: none; }
+        .brand-logo { font-size: 32px; color: var(--primary-navy); }
+        .brand-text h1 { font-family: 'Cinzel', serif; font-size: 18px; font-weight: 700; color: var(--primary-navy); letter-spacing: 0.5px; }
+        .brand-text p { font-size: 11px; text-transform: uppercase; color: var(--accent-gold); letter-spacing: 1.5px; margin-top: 2px; font-weight: 600; }
+        .nav-menu { display: flex; align-items: center; gap: 32px; list-style: none; }
+        .nav-menu a { text-decoration: none; color: #475569; font-size: 14px; font-weight: 500; transition: color 0.2s ease; }
+        .nav-menu a:hover { color: var(--primary-navy); }
+        .btn-cta { background: var(--primary-navy); color: #FFFFFF !important; padding: 10px 20px; border-radius: 6px; font-weight: 600 !important; }
+        .hero-section { background: linear-gradient(135deg, #050C16 0%, #0A192F 100%); color: #FFFFFF; padding: 80px 0; position: relative; overflow: hidden; }
+        .hero-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 64px; align-items: center; }
+        .hero-content h2 { font-family: 'Cinzel', serif; font-size: 42px; font-weight: 700; line-height: 1.2; margin-bottom: 20px; }
+        .hero-content h2 em { color: var(--accent-gold); font-style: normal; }
+        .hero-tagline { font-size: 16px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 36px; }
+        .kpi-wrapper { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .kpi-card { background: var(--surface-navy); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 12px; padding: 24px; position: relative; }
+        .kpi-title { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); letter-spacing: 1px; font-weight: 600; }
+        .kpi-value { font-size: 36px; font-weight: 700; color: var(--text-primary); margin-top: 8px; }
+        
+        /* SEARCH & FILTER CONTROLS HUB */
+        .filter-control-deck {
+            background: #F8FAFC;
             padding: 24px;
-            position: relative;
-            transition: transform 0.3s ease;
-        }
-
-        .kpi-card:hover {
-            transform: translateY(-4px);
-        }
-
-        .kpi-card i {
-            font-size: 24px;
-            color: var(--accent-gold);
-            position: absolute;
-            top: 24px;
-            right: 24px;
-            opacity: 0.3;
-        }
-
-        .kpi-title {
-            font-size: 11px;
-            text-transform: uppercase;
-            color: var(--text-secondary);
-            letter-spacing: 1px;
-            font-weight: 600;
-        }
-
-        .kpi-value {
-            font-size: 36px;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-top: 8px;
-        }
-
-        /* ── JURISDICTIONS LISTING ── */
-        .analytics-section {
-            padding: 80px 0;
-            background: #FFFFFF;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 48px;
-        }
-
-        .section-header h2 {
-            font-family: 'Cinzel', serif;
-            font-size: 28px;
-            color: var(--primary-navy);
-            margin-bottom: 8px;
-        }
-
-        .section-header p {
-            color: #64748B;
-            font-size: 14px;
-        }
-
-        .analytics-grid {
+            border-bottom: 1px solid var(--border-color);
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 48px;
-            align-items: center;
+            gap: 20px;
         }
-
-        .chart-box {
-            background: var(--bg-light);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 32px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.01);
-        }
-
-        .court-metric-list {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .court-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 14px 20px;
-            background: var(--bg-light);
+        .filter-box { display: flex; flex-direction: column; gap: 8px; }
+        .filter-box label { font-size: 12px; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: 0.5px; }
+        .filter-select {
+            padding: 12px 16px;
             border-radius: 8px;
             border: 1px solid var(--border-color);
-        }
-
-        .court-name {
+            background-color: #FFFFFF;
             font-size: 14px;
-            font-weight: 600;
-            color: #334155;
-        }
-
-        .court-badge {
-            background: var(--primary-navy);
-            color: #FFFFFF;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 700;
-        }
-
-        /* ── CENTRAL LIVE SEARCH TERMINAL ── */
-        .terminal-section {
-            padding: 80px 0;
-        }
-
-        .terminal-card {
-            background: #FFFFFF;
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.03);
-            overflow: hidden;
-        }
-
-        .terminal-bar {
-            background: var(--primary-navy);
-            color: #FFFFFF;
-            padding: 20px 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .terminal-bar h3 {
-            font-family: 'Cinzel', serif;
-            font-size: 16px;
-            letter-spacing: 0.5px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        /* MASTER LIVE DATAGRID TABLE */
-        .table-scroll-engine {
-            overflow-x: auto;
-            width: 100%;
-        }
-
-        .datagrid-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 13px;
-            text-align: left;
-            min-width: 1100px;
-        }
-
-        .datagrid-table th {
-            background: #F1F5F9;
-            color: #475569;
-            font-weight: 600;
-            padding: 16px 20px;
-            border-bottom: 1px solid var(--border-color);
-            text-transform: uppercase;
-            font-size: 11px;
-            letter-spacing: 0.5px;
-        }
-
-        .datagrid-table td {
-            padding: 18px 20px;
-            border-bottom: 1px solid var(--border-color);
-            color: #334155;
-            vertical-align: top;
-            line-height: 1.5;
-        }
-
-        .datagrid-table tbody tr:hover {
-            background-color: #F8FAFC;
-        }
-
-        /* Premium Element Layout Wrappers */
-        .cnr-code {
-            font-family: 'Fira Code', monospace;
-            font-size: 11px;
-            color: #0F172A;
-            background: #F1F5F9;
-            padding: 2px 6px;
-            border-radius: 4px;
             font-weight: 500;
+            color: #1E293B;
+            outline: none;
+            cursor: pointer;
+            transition: border 0.2s ease;
         }
+        .filter-select:focus { border-color: var(--primary-navy); }
 
-        .case-title-block {
-            font-weight: 700;
-            color: var(--primary-navy);
-        }
-
-        .subject-matter-text {
-            color: #64748B;
-            font-size: 12px;
-            max-width: 280px;
-            display: block;
-            white-space: normal;
-        }
-
-        .badge-dept {
-            display: inline-block;
-            background: #E2E8F0;
-            color: #475569;
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-
-        .hearing-date-badge {
-            font-weight: 700;
-            color: var(--primary-navy);
-        }
-
-        .status-pill {
-            display: inline-flex;
-            align-items: center;
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-
+        .terminal-section { padding: 60px 0; }
+        .terminal-card { background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 16px; box-shadow: 0 20px 40px rgba(15, 23, 42, 0.03); overflow: hidden; }
+        .terminal-bar { background: var(--primary-navy); color: #FFFFFF; padding: 20px 24px; display: flex; justify-content: space-between; align-items: center; }
+        .terminal-bar h3 { font-family: 'Cinzel', serif; font-size: 16px; display: flex; align-items: center; gap: 10px; }
+        .table-scroll-engine { overflow-x: auto; width: 100%; }
+        .datagrid-table { width: 100%; border-collapse: collapse; font-size: 13px; text-align: left; min-width: 1100px; }
+        .datagrid-table th { background: #F1F5F9; color: #475569; font-weight: 600; padding: 16px 20px; border-bottom: 1px solid var(--border-color); text-transform: uppercase; font-size: 11px; }
+        .datagrid-table td { padding: 18px 20px; border-bottom: 1px solid var(--border-color); color: #334155; vertical-align: top; }
+        .datagrid-table tbody tr:hover { background-color: #F8FAFC; }
+        .cnr-code { font-family: 'Fira Code', monospace; font-size: 11px; color: #0F172A; background: #F1F5F9; padding: 2px 6px; border-radius: 4px; }
+        .case-title-block { font-weight: 700; color: var(--primary-navy); }
+        .subject-matter-text { color: #64748B; font-size: 12px; max-width: 280px; display: block; white-space: normal; }
+        .badge-dept { display: inline-block; background: #E2E8F0; color: #475569; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; text-transform: uppercase; }
+        .status-pill { display: inline-flex; align-items: center; padding: 4px 10px; border-radius: 12px; font-size: 11px; font-weight: 700; text-transform: uppercase; }
         .status-pill.active { background: var(--status-active-bg); color: var(--status-active-txt); }
         .status-pill.pending { background: var(--status-pending-bg); color: var(--status-pending-txt); }
-
-        /* LOADING HUB SHIMMER OVERLAY */
-        .loading-shimmer-hub {
-            padding: 60px;
-            text-align: center;
-            color: #64748B;
-            font-weight: 500;
-        }
-
-        .spinner {
-            width: 40px;
-            height: 40px;
-            border: 4px solid var(--border-color);
-            border-top: 4px solid var(--primary-navy);
-            border-radius: 50%;
-            margin: 0 auto 16px auto;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* DISCLAIMER BOARD ELEMENT */
-        .disclaimer-card {
-            background: #FFFBEB;
-            border: 1px solid #FDE68A;
-            border-left: 4px solid var(--accent-gold);
-            border-radius: 12px;
-            padding: 24px;
-            margin-top: 40px;
-            display: flex;
-            gap: 16px;
-        }
-
-        .disclaimer-card i {
-            font-size: 24px;
-            color: #D97706;
-        }
-
-        .disclaimer-card h4 {
-            color: #92400E;
-            font-size: 14px;
-            font-weight: 700;
-            margin-bottom: 4px;
-            text-transform: uppercase;
-        }
-
-        .disclaimer-card p {
-            color: #78350F;
-            font-size: 13px;
-            line-height: 1.6;
-        }
-
-        /* ── REFINED CORPORATE FOOTER ── */
-        footer {
-            background: var(--primary-navy);
-            color: rgba(255, 255, 255, 0.6);
-            padding: 60px 0 30px 0;
-            margin-top: 100px;
-            border-top: 3px solid var(--accent-gold);
-            font-size: 13px;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 80px;
-            margin-bottom: 40px;
-        }
-
-        .footer-brand h3 {
-            font-family: 'Cinzel', serif;
-            color: #FFFFFF;
-            font-size: 18px;
-            margin-bottom: 12px;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            padding-top: 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        /* RESPONSIVE LAYOUT MATRIX */
-        @media (max-width: 968px) {
-            .hero-grid, .analytics-grid, .footer-grid { grid-template-columns: 1fr; gap: 40px; }
-            .kpi-wrapper { grid-template-columns: 1fr; }
-            .hero-content h2 { font-size: 32px; }
-        }
+        .loading-shimmer-hub { padding: 60px; text-align: center; color: #64748B; }
+        .spinner { width: 40px; height: 40px; border: 4px solid var(--border-color); border-top: 4px solid var(--primary-navy); border-radius: 50%; margin: 0 auto 16px auto; animation: spin 1s linear infinite; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .disclaimer-card { background: #FFFBEB; border: 1px solid #FDE68A; border-left: 4px solid var(--accent-gold); border-radius: 12px; padding: 24px; margin-top: 40px; display: flex; gap: 16px; }
+        footer { background: var(--primary-navy); color: rgba(255, 255, 255, 0.6); padding: 40px 0 20px 0; margin-top: 60px; border-top: 3px solid var(--accent-gold); font-size: 13px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 80px; }
+        .footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 20px; display: flex; justify-content: space-between; align-items: center; }
+        @media (max-width: 968px) { .hero-grid, .footer-grid, .filter-control-deck { grid-template-columns: 1fr; } .kpi-wrapper { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
 
-    <!-- EXECUTIVE TOP BAR BANNER -->
     <div class="top-banner">
         <div class="container inner">
-            <div>
-                <i class="fa-solid fa-building-shield"></i> Government of Jammu & Kashmir &nbsp;|&nbsp; Department of Law, Justice & Parliamentary Affairs
-            </div>
-            <div class="live-sync-indicator">
-                <div class="pulse-dot"></div> Live Sheet Datastream Connected
-            </div>
+            <div><i class="fa-solid fa-building-shield"></i> Government of Jammu & Kashmir &nbsp;|&nbsp; Department of Law, Justice & Parliamentary Affairs</div>
+            <div class="live-sync-indicator"><div class="pulse-dot"></div> Live Sheet Datastream Connected</div>
         </div>
     </div>
 
-    <!-- MAIN CORPORATE HEADER NAV -->
     <header>
         <div class="container nav-container">
             <a href="#" class="brand-block">
@@ -572,84 +120,54 @@
             </a>
             <ul class="nav-menu">
                 <li><a href="#overview">Overview</a></li>
-                <li><a href="#analytics">Jurisdictions</a></li>
                 <li><a href="#terminal" class="btn-cta">Access Case Terminal</a></li>
             </ul>
         </div>
     </header>
 
-    <!-- PREMIUM HERO SUITE SECTION -->
     <section class="hero-section" id="overview">
         <div class="container hero-grid">
             <div class="hero-content">
                 <h2>Upholding Judicial Integrity via <em>Precision Analytics</em></h2>
-                <p class="hero-tagline">
-                    The District Litigation Office Kupwara coordinates government defense strategies, processes legal answers, and manages civil litigation across courts in Kupwara district.
-                </p>
-                
-                <!-- AUTO-UPDATING CORE CARD STATISTICS -->
+                <p class="hero-tagline">The District Litigation Office Kupwara coordinates government defense strategies and manages civil litigation across courts in Kupwara district.</p>
                 <div class="kpi-wrapper">
-                    <div class="kpi-card">
-                        <i class="fa-solid fa-folder-open"></i>
-                        <div class="kpi-title">Total Handled Logs</div>
-                        <div class="kpi-value" id="kpi-total"><i class="fas fa-circle-notch fa-spin" style="font-size:20px; opacity:1;"></i></div>
-                    </div>
-                    <div class="kpi-card">
-                        <i class="fa-solid fa-gavel"></i>
-                        <div class="kpi-title">Active Litigation</div>
-                        <div class="kpi-value" id="kpi-active"><i class="fas fa-circle-notch fa-spin" style="font-size:20px; opacity:1;"></i></div>
-                    </div>
-                    <div class="kpi-card">
-                        <i class="fa-solid fa-square-check"></i>
-                        <div class="kpi-title">Disposed Dossiers</div>
-                        <div class="kpi-value" id="kpi-disposed"><i class="fas fa-circle-notch fa-spin" style="font-size:20px; opacity:1;"></i></div>
-                    </div>
-                </div>
-            </div>
-            
-            <div style="text-align: center;">
-                <i class="fa-solid fa-scale-unbalanced-flip" style="font-size: 220px; color: rgba(251, 191, 36, 0.04); position: absolute; transform: translate(-50%, -50%);"></i>
-            </div>
-        </div>
-    </section>
-
-    <!-- JURISDICTIONS ANALYTICS SECTION -->
-    <section class="analytics-section" id="analytics">
-        <div class="container">
-            <div class="section-header">
-                <h2>Court-wise Case Volumetric Weight</h2>
-                <p>Real-time caseload footprint distribution across the judicial forums of Kupwara District</p>
-            </div>
-            
-            <div class="analytics-grid">
-                <!-- AUTOMATED INTERACTIVE LISTING ELEMENT -->
-                <div class="court-metric-list" id="court-breakdown-list">
-                    <div class="loading-shimmer-hub"><div class="spinner"></div>Synchronizing Jurisdictions...</div>
-                </div>
-                
-                <div class="chart-box" style="text-align: center; color: #64748B;">
-                    <i class="fa-solid fa-chart-pie" style="font-size: 48px; margin-bottom: 16px; color: var(--accent-gold);"></i>
-                    <h4 style="color: var(--primary-navy); margin-bottom: 8px; font-weight:700;">Graphic Analytics Integration</h4>
-                    <p style="font-size:13px;">Data parameters mapped out in the sidebar list are generated live from the master file configuration matrices.</p>
+                    <div class="kpi-card"><div class="kpi-title">Total Handled Logs</div><div class="kpi-value" id="kpi-total">-</div></div>
+                    <div class="kpi-card"><div class="kpi-title">Active Litigation</div><div class="kpi-value" id="kpi-active">-</div></div>
+                    <div class="kpi-card"><div class="kpi-title">Disposed Dossiers</div><div class="kpi-value" id="kpi-disposed">-</div></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- LIVE DATA RUN-TIME TERMINAL -->
+    <!-- LIVE DATA TERMINAL WITH DROPDOWN FILTER LAYOUTS -->
     <section class="terminal-section" id="terminal">
         <div class="container">
             <div class="terminal-card">
                 <div class="terminal-bar">
-                    <h3><i class="fa-solid fa-database"></i> Live Query Terminal (Filtered Dashboard Sheet Pipeline)</h3>
-                    <span style="font-size: 11px; font-family: 'Fira Code', monospace; color: var(--accent-gold);">SYSTEM STATUS: SECURE CONNECTION</span>
+                    <h3><i class="fa-solid fa-database"></i> Live Query Terminal</h3>
+                    <span style="font-size: 11px; font-family: 'Fira Code', monospace; color: var(--accent-gold);">SYSTEM STATUS: FULLY INTERACTIVE</span>
+                </div>
+
+                <!-- NEW INTERACTIVE FILTERS DECK ELEMENT -->
+                <div class="filter-control-deck">
+                    <div class="filter-box">
+                        <label for="court-select"><i class="fa-solid fa-gavel" style="color:var(--accent-gold); margin-right:6px;"></i> Filter by Court Forum</label>
+                        <select id="court-select" class="filter-select">
+                            <option value="">-- All Judicial Courts --</option>
+                        </select>
+                    </div>
+                    <div class="filter-box">
+                        <label for="dept-select"><i class="fa-solid fa-building" style="color:var(--accent-gold); margin-right:6px;"></i> Filter by Department</label>
+                        <select id="dept-select" class="filter-select">
+                            <option value="">-- All Departments --</option>
+                        </select>
+                    </div>
                 </div>
                 
-                <!-- DYNAMIC DATAGRID RENDER ENGINE -->
                 <div class="table-scroll-engine" id="terminal-table-wrapper">
                     <div class="loading-shimmer-hub" id="table-loading-state">
                         <div class="spinner"></div>
-                        <p>Querying sheet pipeline matrices... Fetching active cases...</p>
+                        <p>Querying dynamic master records...</p>
                     </div>
                     
                     <table class="datagrid-table" id="live-data-grid" style="display: none;">
@@ -666,91 +184,75 @@
                                 <th>State Status</th>
                             </tr>
                         </thead>
-                        <tbody id="live-data-rows">
-                            <!-- Injected dynamically via script -->
-                        </tbody>
+                        <tbody id="live-data-rows"></tbody>
                     </table>
                 </div>
             </div>
 
-            <!-- SECURITY LEGAL DISCLAIMER PANEL -->
             <div class="disclaimer-card">
                 <i class="fa-solid fa-circle-exclamation"></i>
                 <div>
                     <h4>Official Regulatory Disclaimer</h4>
-                    <p>The information displayed on this network framework is structured solely for keeping administrative staff and official stakeholder departments informed. Data extracted cannot be made the basis of any counter-litigation, claim, or actionable assertion. For certified copies, consult the District Litigation Office Complex registry directly.</p>
+                    <p>The information displayed on this network framework is structured solely for keeping administrative staff and official stakeholder departments informed. Data extracted cannot be made the basis of any counter-litigation, claim, or actionable assertion.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CORPORATE REFINED FOOTER -->
     <footer>
         <div class="container footer-grid">
             <div class="footer-brand">
                 <h3>District Litigation Office Kupwara</h3>
-                <p style="line-height: 1.6; margin-bottom: 12px;">Operating under the aegis of Department of Law, Justice & Parliamentary Affairs, Government of Jammu & Kashmir. Providing representation workflows across structural tribunals.</p>
-                <span style="font-size: 11px; color: var(--text-secondary);">Framework Year: 2026 | Cloud Synced Architecture</span>
-            </div>
-            <div>
-                <h4 style="color: #FFFFFF; font-size:12px; text-transform:uppercase; margin-bottom:12px; letter-spacing:1px;">Internal Junctions</h4>
-                <p>District Court Complex, Kupwara, J&K — 193222</p>
-                <p style="margin-top: 8px; color: var(--accent-gold);">Support: dlokupwara@jkgov.in</p>
+                <p>Operating under the aegis of Department of Law, Justice & Parliamentary Affairs, Government of Jammu & Kashmir.</p>
             </div>
         </div>
         <div class="container footer-bottom">
-            <p>&copy; 2026 District Litigation Office Kupwara. Automated Content Delivery Distribution.</p>
+            <p>&copy; 2026 District Litigation Office Kupwara.</p>
             <span style="color: var(--accent-gold); font-weight:600;">Government of Jammu & Kashmir</span>
         </div>
     </footer>
 
-    <!-- INTERFACE REAL-TIME PIPELINE SCRIPT -->
     <script>
-        // Integrated Live Web App API link
         const APPS_SCRIPT_API_URL = "https://script.google.com/macros/s/AKfycbzKEp399ADOZ7M5wOFq3f7aPQ5tqhTLBlpBJ_ReZ-aVxNuSU3vOzf2tZOOZk9L-fpJZ/exec";
+        
+        // Cache to prevent repetitive execution rendering lags
+        let hasPopulatedDropdowns = false;
 
-        async function pullLiveDashboardData() {
+        async function fetchFilteredData() {
+            // Display loading overlay states safely during queries
+            document.getElementById("table-loading-state").style.display = "block";
+            document.getElementById("live-data-grid").style.display = "none";
+
+            const selectedCourt = document.getElementById("court-select").value;
+            const selectedDept = document.getElementById("dept-select").value;
+
+            // Append standard URL structure parameters dynamically based on element states
+            const finalQueryUrl = `${APPS_SCRIPT_API_URL}?court=${encodeURIComponent(selectedCourt)}&department=${encodeURIComponent(selectedDept)}`;
+
             try {
-                const response = await fetch(APPS_SCRIPT_API_URL);
-                if (!response.ok) throw new Error("Network latency threshold reached.");
-                
+                const response = await fetch(finalQueryUrl);
                 const payload = await response.json();
-                
-                // 1. Map Macro Metric Statistics Cards
+
+                // 1. Update Core Stats Cards
                 document.getElementById("kpi-total").textContent = payload.kpis.total;
                 document.getElementById("kpi-active").textContent = payload.kpis.active;
                 document.getElementById("kpi-disposed").textContent = payload.kpis.disposed;
-                
-                // 2. Render Left Column Court Footprints List
-                const breakdownContainer = document.getElementById("court-breakdown-list");
-                breakdownContainer.innerHTML = ""; // Clear loader layout shimmers
-                
-                payload.courts.forEach(court => {
-                    const rowHTML = `
-                        <div class="court-row">
-                            <span class="court-name"><i class="fa-solid fa-gavel" style="color:var(--accent-gold); margin-right:10px;"></i>${court.name}</span>
-                            <span class="court-badge">${court.count}</span>
-                        </div>
-                    `;
-                    breakdownContainer.insertAdjacentHTML("beforeend", rowHTML);
-                });
-                
-                // 3. Populate and Display the Main Filtered Grid Table
+
+                // 2. Populate Dropdowns dynamically once upon base frame bootstrap initialization
+                if (!hasPopulatedDropdowns) {
+                    populateFilterOptions("court-select", payload.dropdowns.courts);
+                    populateFilterOptions("dept-select", payload.dropdowns.departments);
+                    hasPopulatedDropdowns = true;
+                }
+
+                // 3. Populate Active Table Grid Arrays
                 const rowsContainer = document.getElementById("live-data-rows");
-                rowsContainer.innerHTML = ""; // Flush the framework
-                
-                if(!payload.cases || payload.cases.length === 0) {
-                    rowsContainer.innerHTML = `
-                        <tr>
-                            <td colspan="9" style="text-align:center; padding: 40px; color:#64748B; font-weight:500;">
-                                <i class="fa-solid fa-folder-minus" style="display:block; font-size:24px; margin-bottom:8px;"></i>
-                                No active litigation rows matched the current sheet dashboard criteria selection.
-                            </td>
-                        </tr>
-                    `;
+                rowsContainer.innerHTML = "";
+
+                if (!payload.cases || payload.cases.length === 0) {
+                    rowsContainer.innerHTML = `<tr><td colspan="9" style="text-align:center; padding: 40px; color:#64748B;">No matching active case logs found for the selected options.</td></tr>`;
                 } else {
                     payload.cases.forEach(caseItem => {
-                        // Establish conditional status pill design variants
                         const isReplyFiled = !caseItem.replyStatus.toLowerCase().includes("not");
                         const replyStatusClass = isReplyFiled ? "active" : "pending";
                         
@@ -770,26 +272,38 @@
                         rowsContainer.insertAdjacentHTML("beforeend", caseRowHTML);
                     });
                 }
-                
-                // Transition interface view from loading spinner to the compiled data view
+
                 document.getElementById("table-loading-state").style.display = "none";
                 document.getElementById("live-data-grid").style.display = "table";
-                
+
             } catch (err) {
-                console.error("Critical Runtime Sync Error: ", err);
-                const tableWrapper = document.getElementById("terminal-table-wrapper");
-                tableWrapper.innerHTML = `
-                    <div style="padding: 40px; text-align:center; color:#EF4444; font-weight:600;">
-                        <i class="fa-solid fa-triangle-exclamation" style="font-size:32px; margin-bottom:12px;"></i>
-                        <p>Failed to establish a cloud connection with the master data sheet server.</p>
-                        <p style="font-size:12px; font-weight:400; color:#64748B; margin-top:4px;">Verify deployment accessibility configurations inside Google Apps Script.</p>
-                    </div>
-                `;
+                console.error("Pipeline breakdown tracking failure: ", err);
             }
         }
 
-        // Trigger execution routine when system DOM structures settle
-        window.addEventListener("DOMContentLoaded", pullLiveDashboardData);
+        function populateFilterOptions(elementId, optionsArray) {
+            const selectElement = document.getElementById(elementId);
+            const savedValue = selectElement.value; // Retain current selection choice layout state
+            
+            // Wipe options except placeholder default choice element
+            selectElement.innerHTML = selectElement.options[0].outerHTML;
+            
+            optionsArray.forEach(val => {
+                const opt = document.createElement("option");
+                opt.value = val;
+                opt.textContent = val;
+                selectElement.appendChild(opt);
+            });
+            
+            selectElement.value = savedValue;
+        }
+
+        // Attach event listeners to monitor live changes on selectors
+        document.getElementById("court-select").addEventListener("change", fetchFilteredData);
+        document.getElementById("dept-select").addEventListener("change", fetchFilteredData);
+
+        // Bootstrap engine run routines on start
+        window.addEventListener("DOMContentLoaded", fetchFilteredData);
     </script>
 </body>
 </html>
